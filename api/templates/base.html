@@ -1,0 +1,31 @@
+{% load static tailwind_tags %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <h1>Hello, <span id="telegram-id">loading...</span>!</h1>
+
+    <script nonce="{{ request.csp_nonce }}">
+        // Initialize the Telegram Web App
+        Telegram.WebApp.ready();
+
+        // Get the user's Telegram ID
+        const userId = Telegram.WebApp.initDataUnsafe.user?.id;
+
+        // Display the user's Telegram ID
+        document.getElementById('telegram-id').textContent = userId ? userId : "User ID not available";
+    </script>
+
+    <div class="px-10 mt-32">
+    {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>
