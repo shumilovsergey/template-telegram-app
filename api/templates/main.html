@@ -4,7 +4,26 @@ main
 {% endblock %}
 {% block content %}
 
-qq
+<div class="h-10 w-10 bg-red-600">
+  main
+</div>
+
+
+<h1 class="text-8xl">Your Telegram ID is: <span id="telegram-id">Loading...</span></h1>
+
+<form method="get" action="{% url 'api:out' %}">
+  <div>
+    <button class="hover:bg-stone-300 h-10 w-40 items-center flex justify-center duration-500 text-lg">test</button>
+  </div>
+</form>
+
+<script>
+    window.Telegram.WebApp.ready();
+
+    const userId = window.Telegram.WebApp.initDataUnsafe.user.id;
+    document.getElementById('telegram-id').textContent = userId;
+</script>
+
 
 {% endblock %}
 

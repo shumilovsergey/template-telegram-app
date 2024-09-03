@@ -1,27 +1,21 @@
 {% load static tailwind_tags %}
 {% load static %}
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+    <title>{% block title %}bitstock{% endblock %}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/svg+xml" href="{% static 'icon.png' %}">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+{% tailwind_css %}
 </head>
-<body>
-    <h1>Hello, <span id="telegram-id">loading...</span>!</h1>
+<body class="">
 
-    <script nonce="{{ request.csp_nonce }}">
-        // Initialize the Telegram Web App
-        Telegram.WebApp.ready();
-
-        // Get the user's Telegram ID
-        const userId = Telegram.WebApp.initDataUnsafe.user?.id;
-
-        // Display the user's Telegram ID
-        document.getElementById('telegram-id').textContent = userId ? userId : "User ID not available";
-    </script>
+    <div class="h-10 w-10 bg-yellow-600">
+        base
+    </div>
 
     <div class="px-10 mt-32">
     {% block content %}{% endblock %}

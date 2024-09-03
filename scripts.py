@@ -1,12 +1,21 @@
 import requests
-from const import TOKEN_TG
-from const import HOST_DNS
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+TOKEN_TG = os.getenv("TOKEN_TG")
+HOST_DNS = os.getenv("HOST_DNS")
+
 
 WEB_APP_URL = f"https://{HOST_DNS}"
 WEB_HOOK_URL = f"https://{HOST_DNS}/bot"
 
 def add_button():
-    url = f"https://api.telegram.org/bot{TOKEN_TG}/setWebhook"
+    print(TOKEN_TG)
+    print(WEB_APP_URL)
+    
+    url = f"https://api.telegram.org/bot{TOKEN_TG}/setChatMenuButton"
 
     payload = {
         "menu_button": {
@@ -23,7 +32,7 @@ def add_button():
     return
 
 def set_webhook():
-    url = f"https://api.telegram.org/bot{TOKEN_TG}/setChatMenuButton"
+    url = f"https://api.telegram.org/bot{TOKEN_TG}/setWebhook"
 
     payload = {
         "url": WEB_HOOK_URL
@@ -34,6 +43,6 @@ def set_webhook():
     return
 
 
-# add_button()
+add_button()
 
 # set_webhook()

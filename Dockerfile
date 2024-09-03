@@ -17,8 +17,6 @@ RUN pip3 install requests
 RUN pip3 install dataclasses-serialization
 RUN pip3 install django-tailwind
 RUN pip3 install 'django-tailwind[reload]'
-RUN pip3 install django-csp
-RUN pip3 install uuid
 
 COPY . .
 

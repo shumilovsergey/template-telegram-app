@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+out
+{% endblock %}
+{% block content %}
+
+<body>
+    <h1>You have been redirected!</h1>
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // Initialize the Telegram Web App SDK
+        window.Telegram.WebApp.ready();
+
+        // Close the Web App
+        setTimeout(() => {
+            window.Telegram.WebApp.close();
+            // Optional: Redirect to a different page if needed
+            // window.location.href = '/some-other-page/';
+        }, 100); // Short delay to ensure Web App is closed before doing anything else
+    });
+</script>
+
+
+{% endblock %}
