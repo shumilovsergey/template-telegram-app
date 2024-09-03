@@ -1,3 +1,5 @@
 sqlite/db.sqlite3
 server/.env
 /.env
+
+api/migrations
